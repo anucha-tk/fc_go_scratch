@@ -38,8 +38,9 @@ func main() {
 	router.Mount("/v1", v1Router)
 
 	srv := http.Server{
-		Addr:    "localhost:" + port,
-		Handler: router,
+		Addr:        "localhost:" + port,
+		Handler:     router,
+		ReadTimeout: 300,
 	}
 	fmt.Println("Server started on port:", port)
 	err = srv.ListenAndServe()

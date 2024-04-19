@@ -9,7 +9,10 @@ import (
 )
 
 type Querier interface {
+	CreateFeed(ctx context.Context, arg CreateFeedParams) (Feed, error)
 	CreateUser(ctx context.Context, arg CreateUserParams) (User, error)
+	GetFeeds(ctx context.Context) ([]Feed, error)
+	GetUserByAPIKEY(ctx context.Context, apiKey string) (User, error)
 }
 
 var _ Querier = (*Queries)(nil)

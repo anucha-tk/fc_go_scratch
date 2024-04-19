@@ -56,13 +56,16 @@ func main() {
 	v1Router := chi.NewRouter()
 	v1Router.Get("/ready", handlerReadiness)
 	v1Router.Get("/err", handlerErr)
+	v1Router.Get("/users", apiCfg.middlewareAuth(apiCfg.handlerGetUser))
 	v1Router.Post("/users", apiCfg.handlerCreateUser)
+	v1Router.Get("/feeds", apiCfg.middlewareAuth(apiCfg.handlerGetFeeds))
+	v1Router.Post("/feeds", apiCfg.middlewareAuth(apiCfg.handlerCreateFeed))
 	router.Mount("/v1", v1Router)
 
 	srv := http.Server{
 		Addr:              "localhost:" + port,
 		Handler:           router,
-		ReadHeaderTimeout: time.Second * 10,
+		ReadHeaderTimeout: time.Second * 5,
 	}
 	fmt.Println("Server started on port:", port)
 	err = srv.ListenAndServe()

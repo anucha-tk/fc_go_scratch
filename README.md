@@ -12,3 +12,34 @@
 - cors
 - handlerWithJson
 - commitlint & linter
+- database
+  - goose
+  - sqlc
+- docker
+- auth
+  - apikey
+
+## database
+
+```mermaid.js
+erDiagram
+    users {
+        id uuid
+        name text
+        apikey varchar(64)
+        created_at timestamp
+        updated_at timestamp
+    }
+
+    feeds {
+        id uuid
+        name text
+        url text
+        created_at timestamp
+        updated_at timestamp
+        user_id uuid
+    }
+
+    users ||--o{ feeds : contains
+
+```

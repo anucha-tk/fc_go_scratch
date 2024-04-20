@@ -4,6 +4,7 @@
 
 - [GOLANG SCRATCH](#golang-scratch)
   - [tech and tools](#tech-and-tools)
+  - [database](#database)
   <!--toc:end-->
 
 ## tech and tools
@@ -18,6 +19,7 @@
 - docker
 - auth
   - apikey
+- relationship
 
 ## database
 

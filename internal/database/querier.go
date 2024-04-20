@@ -6,11 +6,16 @@ package database
 
 import (
 	"context"
+
+	"github.com/google/uuid"
 )
 
 type Querier interface {
 	CreateFeed(ctx context.Context, arg CreateFeedParams) (Feed, error)
+	CreateFeedFollow(ctx context.Context, arg CreateFeedFollowParams) (FeedFollow, error)
 	CreateUser(ctx context.Context, arg CreateUserParams) (User, error)
+	DeleteFeedFollowById(ctx context.Context, arg DeleteFeedFollowByIdParams) error
+	GetFeedFollowsByUserId(ctx context.Context, userID uuid.UUID) ([]FeedFollow, error)
 	GetFeeds(ctx context.Context) ([]Feed, error)
 	GetUserByAPIKEY(ctx context.Context, apiKey string) (User, error)
 }

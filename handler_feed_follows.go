@@ -48,7 +48,7 @@ func (apiCfg *apiConfig) handlerGetFeedFollowByUserID(w http.ResponseWriter, r *
 func (apiCfg *apiConfig) handlerDeleteFeedFollowByID(w http.ResponseWriter, r *http.Request, user database.User) {
 	feedFollowIDStr := chi.URLParam(r, "feedFollowID")
 	feedFollowID, err := uuid.Parse(feedFollowIDStr)
-	if err == nil {
+	if err != nil {
 		responseWithError(w, 400, fmt.Sprintf("invalid uuid: %v", err))
 		return
 	}
